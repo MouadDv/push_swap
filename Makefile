@@ -12,7 +12,7 @@
 
 
 NAME = push_swap
-SRCS = operators.c push_swap.c solve_less_5.c solve_less_100.c solver.c utils.c
+SRCS = operators.c push_swap.c solve_less_5.c solve_less_100.c solver.c utils.c solve_less_100_norm.c
 
 FLAGS= -Wall -Wextra -Werror
 rm = rm -f

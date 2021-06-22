@@ -21,34 +21,28 @@ typedef struct		s_info
 	t_args			*b;
 }					t_info;
 
-
-t_args  *creat_list(int size);
-int    dump_data(t_info    *info, char **argv);
-
-void    sa(t_args **a);
-void    sb(t_args **b);
-void    ss(t_args **a, t_args **b);
-void    pa(t_args **a, t_args **b);
-void    pb(t_args **a, t_args **b);
-void    ra(t_args **a);
-void    rb(t_args **b);
-void    rr(t_args **a, t_args **b);
-void    rra(t_args **a);
-void    rrb(t_args **b);
-void    rrr(t_args **a, t_args **b);
-
-void    solver(t_info  *info);
-void    solve_less_100(t_info *info);
-void    solve_above_100(t_info *info);
-
-void    solve_less_5(t_info  *info);
-void    solve_two(t_args **a);
-void    solve_three(t_args **a);
-int     find_median(t_args  *list, int  size);
-
-
-
-void    printlist(t_args *list);
+int	list_size(t_args *list);
+int	find_largest(t_args *list);
+int	find_smallest(t_args *list);
+int	top_possition(t_args *list, int min, int max);
+int	buttom_possition(t_args *list, int min, int max);
+t_args	*creat_list(int size);
+int	dump_data(t_info    *info, char **argv);
+void	sa(t_args **a);
+void	sb(t_args **b);
+void	pa(t_args **a, t_args **b);
+void	pb(t_args **a, t_args **b);
+void	ra(t_args **a);
+void	rb(t_args **b);
+void	rra(t_args **a);
+void	rrb(t_args **b);
+void	solver(t_info  *info);
+void	solve_less_100(t_info *info);
+void	solve_above_100(t_info *info);
+void	solve_less_5(t_info  *info);
+void	solve_two(t_args **a);
+void	solve_three(t_args **a);
+int	find_median(t_args  *list, int  size);
 
 
 #endif
