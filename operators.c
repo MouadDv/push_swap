@@ -9,7 +9,7 @@ void    sa(t_args **a)
     swap = (*a)->val;
     (*a)->val = (*a)->next->val;
     (*a)->next->val = swap;
-    printf("sa\n");
+    write(1, "sa\n", 3);
 }
 
 void    sb(t_args **b)
@@ -21,14 +21,14 @@ void    sb(t_args **b)
     swap = (*b)->val;
     (*b)->val = (*b)->next->val;
     (*b)->next->val = swap;
-    printf("sb\n");
+    write(1, "sb\n", 3);
 }
 
 void    ss(t_args **a, t_args **b)
 {
     sa(a);
     sb(b);
-    printf("ss\n");
+    write(1, "ss\n", 3);
 }
 
 void    pa(t_args **a, t_args **b)
@@ -39,7 +39,7 @@ void    pa(t_args **a, t_args **b)
     (*b) = (*b)->next;
     tmp->next = *a;
     *a = tmp;
-    printf("pa\n");
+    write(1, "pa\n", 3);
 }
 
 void    pb(t_args **a, t_args **b)
@@ -50,7 +50,7 @@ void    pb(t_args **a, t_args **b)
     (*a) = (*a)->next;
     tmp->next = *b;
     *b = tmp;
-    printf("pb\n");
+    write(1, "pb\n", 3);
 }
 
 void    ra(t_args **a)
@@ -58,7 +58,6 @@ void    ra(t_args **a)
     t_args  *tmp;
     t_args  *swap;
     t_args  *cp;
-    t_args  *end;
 
     if ((*a)->next == NULL || (*a)->next->next == NULL)
         return ;
@@ -70,7 +69,7 @@ void    ra(t_args **a)
     tmp->next = *a;
     (*a)->next = swap;
     *a = cp;
-    printf("ra\n");
+    write(1, "ra\n", 3);
 }
 
 void    rb(t_args **b)
@@ -78,7 +77,6 @@ void    rb(t_args **b)
     t_args  *tmp;
     t_args  *swap;
     t_args  *cp;
-    t_args  *end;
 
     if ((*b)->next == NULL || (*b)->next->next == NULL)
         return ;
@@ -90,14 +88,14 @@ void    rb(t_args **b)
     tmp->next = *b;
     (*b)->next = swap;
     *b = cp;
-    printf("rb\n");
+    write(1, "rb\n", 3);
 }
 
 void    rr(t_args **a, t_args **b)
 {
     ra(a);
     rb(b);
-    printf("rr\n");
+    write(1, "rr\n", 3);
 }
 
 void    rra(t_args **a)
@@ -122,7 +120,7 @@ void    rra(t_args **a)
     tmp->next = cp;
     swap->next = end;
 
-    printf("rra\n");
+    write(1, "rra\n", 4);
 }
 
 void    rrb(t_args **b)
@@ -147,12 +145,12 @@ void    rrb(t_args **b)
     tmp->next = cp;
     swap->next = end;
 
-    printf("rrb\n");
+    write(1, "rrb\n", 4);
 }
 
 void    rrr(t_args **a, t_args **b)
 {
     rra(a);
     rrb(b);
-    printf("rrr\n");
+    write(1, "rrr\n", 4);
 }

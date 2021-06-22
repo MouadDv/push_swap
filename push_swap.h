@@ -3,7 +3,10 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdio.h>
+# include <math.h>
 # include "libft/libft.h"
+# define INT32_MAX 2147483647
+# define INT32_MIN -2147483648
 
 typedef struct		s_args
 {

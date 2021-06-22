@@ -2,10 +2,6 @@
 
 void    solver(t_info  *info)
 {
-    t_args *list;
-
-    list = info->a;
-    
     if (info->size <= 5)
         solve_less_5(info);
     else if (info->size <= 100)

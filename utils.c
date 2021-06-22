@@ -50,14 +50,12 @@ int checkdata(char  *str)
     return (0);
 }
 
-int     is_duplicate(t_args  *list, int size)
+int     is_duplicate(t_args  *list)
 {
     t_args  *check;
-    int     tmp;
 
     while (list->next)
     {
-        tmp = list->val;
         check = list->next;
         while (check->next)
         {
@@ -90,7 +88,7 @@ int    dump_data(t_info    *info, char **argv)
             i++;
         }
     }
-    if (is_duplicate(info->a, info->size))
+    if (is_duplicate(info->a))
         return (0);
     return (1);
 }
