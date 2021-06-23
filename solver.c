@@ -72,7 +72,7 @@ void	solver(t_info *info)
 	if (info->size <= 5)
 		solve_less_5(info);
 	else if (info->size <= 100)
-		solve_less_100(info);
+		solve_less_100(info, 0);
 	else
-		solve_above_100(info);
+		solve_above_100(info, 0);
 }

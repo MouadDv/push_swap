@@ -4,18 +4,8 @@ void	solve_four(t_info *info)
 {
 	int		i;
 	int		smallest;
-	t_args	*l;
 
-	l = info->a;
-	i = 0;
-	smallest = INT32_MAX;
-	while (i < info->size)
-	{
-		if (l->val < smallest)
-			smallest = l->val;
-		l = l->next;
-		i++;
-	}
+	smallest = find_smallest(info->a);
 	i = 0;
 	while (i < info->size)
 	{

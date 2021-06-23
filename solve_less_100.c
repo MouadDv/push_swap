@@ -47,58 +47,14 @@ void	unload_b(t_info *info)
 	}
 }
 
-int	chunk_end(int size, int min, t_info *info)
-{
-	int		swap;
-	int		i;
-	int		*arr;
-	t_args	*list;
-	int		ret;
-
-	list = info->a;
-	arr = malloc(info->size * sizeof(int));
-	i = 0;
-	while (i < info->size)
-	{
-		arr[i] = list->val;
-		list = list->next;
-		i++;
-	}
-	i = 0;
-	while (i + 1 < info->size)
-	{
-		if (arr[i] <= arr[i + 1])
-			i++;
-		else
-		{
-			swap = arr[i];
-			arr[i] = arr[i + 1];
-			arr[i + 1] = swap;
-			i = 0;
-		}
-	}
-	i = 0;
-	while (arr[i])
-	{
-		if (arr[i] == min)
-			break ;
-		i++;
-	}
-	ret = arr[i + size - 1];
-	free(arr);
-	return (ret);
-}
-
-void	solve_less_100(t_info *info)
+void	solve_less_100(t_info *info, int i)
 {
 	int	chunks;
 	int	chunkend;
 	int	chunkstart;
 	int	smallest;
 	int	largest;
-	int	i;
 
-	i = 0;
 	chunks = info->size / 5;
 	largest = find_largest(info->a);
 	while (i < 5)
@@ -120,16 +76,14 @@ void	solve_less_100(t_info *info)
 	unload_b(info);
 }
 
-void	solve_above_100(t_info *info)
+void	solve_above_100(t_info *info, int i)
 {
 	int	chunks;
 	int	chunkend;
 	int	chunkstart;
 	int	smallest;
 	int	largest;
-	int	i;
 
-	i = 0;
 	chunks = info->size / 12;
 	largest = find_largest(info->a);
 	while (i < 12)
@@ -144,10 +98,8 @@ void	solve_above_100(t_info *info)
 			chunkstart = chunkend;
 		}
 		else
-		{
 			while (chunckunfinished(info->a, chunkstart, largest + 1))
 				push_chunk(info, chunkstart, largest + 1);
-		}
 		i++;
 	}
 	unload_b(info);
