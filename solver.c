@@ -1,70 +1,19 @@
 #include "push_swap.h"
 
-void	rb(t_args **b)
+void	free_allocated(t_info *info)
 {
+	t_args	*list;
 	t_args	*tmp;
-	t_args	*swap;
-	t_args	*cp;
 
-	if ((*b)->next == NULL || (*b)->next->next == NULL)
-		return ;
-	tmp = *b;
-	while (tmp->next->next)
-		tmp = tmp->next;
-	swap = tmp->next;
-	cp = (*b)->next;
-	tmp->next = *b;
-	(*b)->next = swap;
-	*b = cp;
-	write(1, "rb\n", 3);
-}
-
-void	rra(t_args **a)
-{
-	t_args	*tmp;
-	t_args	*swap;
-	t_args	*cp;
-	t_args	*end;
-
-	if ((*a)->next == NULL || (*a)->next->next == NULL)
-		return ;
-	tmp = *a;
-	while (tmp->next->next)
+	list = info->a;
+	while (list)
 	{
-		if (tmp->next->next->next == NULL)
-			swap = tmp;
-		tmp = tmp->next;
+		tmp = list;
+		list = list->next;
+		free(tmp);
 	}
-	end = tmp->next;
-	cp = *a;
-	*a = tmp;
-	tmp->next = cp;
-	swap->next = end;
-	write(1, "rra\n", 4);
-}
-
-void	rrb(t_args **b)
-{
-	t_args	*tmp;
-	t_args	*swap;
-	t_args	*cp;
-	t_args	*end;
-
-	if ((*b)->next == NULL || (*b)->next->next == NULL)
-		return ;
-	tmp = *b;
-	while (tmp->next->next)
-	{
-		if (tmp->next->next->next == NULL)
-			swap = tmp;
-		tmp = tmp->next;
-	}
-	end = tmp->next;
-	cp = *b;
-	*b = tmp;
-	tmp->next = cp;
-	swap->next = end;
-	write(1, "rrb\n", 4);
+	free(info->b);
+	free(info);
 }
 
 void	solver(t_info *info)
@@ -75,4 +24,5 @@ void	solver(t_info *info)
 		solve_less_100(info, 0);
 	else
 		solve_above_100(info, 0);
+	free_allocated(info);
 }

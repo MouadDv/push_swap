@@ -1,40 +1,30 @@
 #include "push_swap.h"
 
-int	chunk_end(int size, int min, t_info *info)
+int	*gen_arr(t_args *list, int size)
 {
-	int		i;
-	int		*arr;
-	int		ret;
+	int	*arr;
+	int	i;
 
-	arr = arr_gen(info, info->a);
+	arr = malloc(size * sizeof(int));
 	i = 0;
-	while (i < info->size)
-	{
-		if (arr[i] == min)
-			break ;
-		i++;
-	}
-	ret = arr[i + size - 1];
-	free(arr);
-	return (ret);
-}
-
-int	*arr_gen(t_info *info, t_args *list)
-{
-	int		i;
-	int		*arr;
-	int		swap;
-
-	arr = malloc(info->size * sizeof(int));
-	i = 0;
-	while (i < info->size)
+	while (i < size)
 	{
 		arr[i] = list->val;
 		list = list->next;
 		i++;
 	}
+	return (arr);
+}
+
+int	find_median(t_args *list, int size, int ret)
+{
+	int	swap;
+	int	i;
+	int	*arr;
+
+	arr = gen_arr(list, size);
 	i = 0;
-	while (i + 1 < info->size)
+	while (i + 1 < size)
 	{
 		if (arr[i] > arr[i + 1])
 		{
@@ -45,18 +35,9 @@ int	*arr_gen(t_info *info, t_args *list)
 		}
 		i++;
 	}
-	return (arr);
-}
-
-int	is_sorted(t_args *a)
-{
-	while (a->next->next)
-	{
-		if (a->val > a->next->val)
-			return (0);
-		a = a->next;
-	}
-	return (1);
+	ret = arr[2];
+	free(arr);
+	return (ret);
 }
 
 int	main(int argc, char **argv)

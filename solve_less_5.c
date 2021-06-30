@@ -28,7 +28,7 @@ void	solve_five(t_info *info)
 	int	trig;
 	int	median;
 
-	median = find_median(info->a, info->size);
+	median = find_median(info->a, info->size, 0);
 	i = 0;
 	trig = 0;
 	while (i < info->size)

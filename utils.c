@@ -93,32 +93,3 @@ int	dump_data(t_info *info, char **argv)
 		return (0);
 	return (1);
 }
-
-int	find_median(t_args *list, int size)
-{
-	int	swap;
-	int	i;
-	int	*arr;
-
-	arr = malloc(size * sizeof(int));
-	i = 0;
-	while (i < size)
-	{
-		arr[i] = list->val;
-		list = list->next;
-		i++;
-	}
-	i = 0;
-	while (i + 1 < size)
-	{
-		if (arr[i] > arr[i + 1])
-		{
-			swap = arr[i];
-			arr[i] = arr[i + 1];
-			arr[i + 1] = swap;
-			i = -1;
-		}
-		i++;
-	}
-	return (arr[2]);
-}

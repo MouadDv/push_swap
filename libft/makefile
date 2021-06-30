@@ -20,18 +20,26 @@ BS = ft_lstmap_bonus.c ft_lstclear_bonus.c ft_lstiter_bonus.c ft_lstdelone_bonus
 OBJECTS = $(SRCS:.c=.o)
 OBJECTS_BS = $(BS:.c=.o)
 INCLUDES=./
+
 all: $(NAME)
+
 $(NAME): $(SRCS) libft.h
-	gcc -Wall -Wextra -Werror -I $(INCLUDES) -c $(SRCS)
-	ar rc $(NAME) $(OBJECTS)
-	ranlib $(NAME)
+	@gcc -Wall -Wextra -Werror -I $(INCLUDES) -c $(SRCS)
+	@ar rc $(NAME) $(OBJECTS)
+	@ranlib $(NAME)
+	
 bonus:
-	gcc -Wall -Wextra -Werror -I $(INCLUDES) -c $(BS)
-	ar rc $(NAME) $(OBJECTS_BS)
-	ranlib $(NAME)
+	@gcc -Wall -Wextra -Werror -I $(INCLUDES) -c $(BS)
+	@ar rc $(NAME) $(OBJECTS_BS)
+	@ranlib $(NAME)
+
 clean:
-	rm -f $(OBJECTS)
-	rm -f $(OBJECTS_BS)
+	@rm -f $(OBJECTS)
+	@rm -f $(OBJECTS_BS)
+
 fclean: clean
-	rm -f $(NAME)
+	@rm -f $(NAME)
+
 re:	fclean all
+
+.PHONY: clean fclean re
